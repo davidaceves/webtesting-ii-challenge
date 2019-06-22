@@ -10,11 +10,18 @@ class App extends Component {
     foul: 0,
     hit: 0
   }
+
+  addItemHandler = event => {
+    event.preventDefault();
+
+    this.setState({ [event.target.name]: event.target.value++})
+    
+  }
   
   render() {
     return (
       <div className="App">
-       <Dashboard />
+       <Dashboard addItemHandler={ this.addItemHandler }/>
        <Display ball={this.state.ball} strike={this.state.strike} />
       </div>
     );

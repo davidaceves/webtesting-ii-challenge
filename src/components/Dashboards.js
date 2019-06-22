@@ -5,10 +5,10 @@ function Dashboard(props) {
     <>
       <h3>Dashboard</h3>
       <form>
-          <button>Strike</button>
-          <button>Ball</button>
-          <button>Foul</button>
-          <button>Hit</button>
+          <button name="strike" onClick={ props.addItemHandler }>Strike</button>
+          <button name="ball" onClick={ props.addItemHandler }>Ball</button>
+          <button name="foul">Foul</button>
+          <button name="hit">Hit</button>
       </form>
     </>
   )

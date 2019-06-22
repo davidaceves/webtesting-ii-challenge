@@ -37,7 +37,8 @@ class Display extends Component {
             this.setState({
                 balls: 0,
                 strikes: 0,
-                outs: this.state.outs + 1
+                outs: this.state.outs < 2 ? this.state.outs + 1 : 0
+                // stretch: Expand the solution... Include the number of outs and track them.
             })
         }
     }
@@ -60,41 +61,6 @@ class Display extends Component {
         });
     }
 
-    // stretch: Expand the solution... Include the number of outs and track them.
-    strikeOutHandler = () => {
-        if(this.state.strikes === 3 ){
-            this.setState({
-                balls: 0,
-                strikes: 0,
-                outs: this.state.outs + 1
-            })
-        } 
-        // else if (this.state.strikes === 3 && this.state.outs === 3){
-        //         this.setState({
-        //             balls: 0,
-        //             strikes: 0,
-        //             outs: 0
-        //         })
-        //     }
-           
-    }
-
-    outHandler = () => {
-        if(this.state.outs >2 ){
-            this.setState({
-                balls: 0,
-                strikes: 0,
-                outs: 0
-            })
-        } 
-        // else {
-        //         this.setState({
-        //             balls: 0,
-        //             strikes: 0,
-        //             outs: 0
-        //         })
-        //     }
-    }
 
   render() {
     return (

@@ -70,5 +70,24 @@ describe('<Display /> tests', () => {
         expect(strikes).toHaveTextContent(/2/i);
     })
 
+    it('should reset balls, strikes and outs to 0 when 3 outs', () => {
+        const { getByText, getByTestId } = render(<Display />);
 
+        const outs = getByText(/Outs/i);
+        const strikeBtn = getByTestId('strike-btn');
+
+        fireEvent.click(strikeBtn);
+        fireEvent.click(strikeBtn);
+        fireEvent.click(strikeBtn);
+
+        fireEvent.click(strikeBtn);
+        fireEvent.click(strikeBtn);
+        fireEvent.click(strikeBtn);
+
+        fireEvent.click(strikeBtn);
+        fireEvent.click(strikeBtn);
+        fireEvent.click(strikeBtn);
+
+        expect(outs).toHaveTextContent(/0/i);
+    })
 });

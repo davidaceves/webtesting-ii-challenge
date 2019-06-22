@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+
+import Display from './components/Display.js';
+import Dashboard from './components/Dashboards.js';
 
 class App extends Component {
   state = {
@@ -12,7 +14,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Hello World</h2>
+       <Dashboard />
+       <Display ball={this.state.ball} strike={this.state.strike} />
       </div>
     );
   }

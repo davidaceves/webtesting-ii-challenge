@@ -18,16 +18,23 @@ class App extends Component {
       [event.target.name]: this.state[event.target.name] + 1
     });
 
-    if (this.state.strike === 3 || this.state.ball === 4) {
-      this.setState({
-        strike: (event.target.value = 0),
-        ball: (event.target.value = 0)
-      });
+    if (this.state.strike === 2 || this.state.ball === 3) {
+      setTimeout(() => {
+        this.setState({
+          strike: 0,
+          ball: 0
+        });
+      }, 500);
     }
   };
 
-  resetCounterHandler = event => {
+  resetHandler = event => {
     event.preventDefault();
+
+    this.setState({
+      strike: (event.target.value = 0),
+      ball: (event.target.value = 0)
+    });
   };
 
   render() {
@@ -35,7 +42,7 @@ class App extends Component {
       <div className="App">
         <Dashboard
           addCounterHandler={this.addCounterHandler}
-          resetCounterHandler={this.resetCounterHandler}
+          resetHandler={this.resetHandler}
         />
         <Display ball={this.state.ball} strike={this.state.strike} />
       </div>

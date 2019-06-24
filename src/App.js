@@ -12,7 +12,7 @@ class App extends Component {
   };
 
   resetHandler = () => {
-    if (this.state.strike >= 2 || this.state.ball === 3) {
+    if (this.state.strike >= 3 || this.state.ball >= 4) {
       setTimeout(() => {
         this.setState({
           strike: 0,
@@ -31,14 +31,17 @@ class App extends Component {
     });
   };
 
-  addCounterHandler = event => {
+  addCounterHandler = async event => {
     event.preventDefault();
+    try {
+      await this.setState({
+        [event.target.name]: this.state[event.target.name] + 1
+      });
 
-    this.setState({
-      [event.target.name]: this.state[event.target.name] + 1
-    });
-
-    this.resetHandler();
+      this.resetHandler();
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   foulHandler = async event => {

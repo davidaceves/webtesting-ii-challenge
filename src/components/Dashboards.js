@@ -11,8 +11,10 @@ function Dashboard(props) {
         <button name="ball" onClick={props.addCounterHandler}>
           Ball
         </button>
-        <button name="foul">Foul</button>
-        <button name="hit" onClick={props.resetHandler}>
+        <button name="foul" onClick={props.foulHandler}>
+          Foul
+        </button>
+        <button name="hit" onClick={props.hitHandler}>
           Hit
         </button>
       </div>

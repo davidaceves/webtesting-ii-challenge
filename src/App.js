@@ -11,14 +11,8 @@ class App extends Component {
     hit: 0
   };
 
-  addCounterHandler = event => {
-    event.preventDefault();
-
-    this.setState({
-      [event.target.name]: this.state[event.target.name] + 1
-    });
-
-    if (this.state.strike === 2 || this.state.ball === 3) {
+  resetHandler = () => {
+    if (this.state.strike >= 2 || this.state.ball === 3) {
       setTimeout(() => {
         this.setState({
           strike: 0,
@@ -28,13 +22,44 @@ class App extends Component {
     }
   };
 
-  resetHandler = event => {
+  hitHandler = event => {
     event.preventDefault();
 
     this.setState({
-      strike: (event.target.value = 0),
-      ball: (event.target.value = 0)
+      strike: 0,
+      ball: 0
     });
+  };
+
+  addCounterHandler = event => {
+    event.preventDefault();
+
+    this.setState({
+      [event.target.name]: this.state[event.target.name] + 1
+    });
+
+    this.resetHandler();
+  };
+
+  foulHandler = async event => {
+    event.preventDefault();
+    this.resetHandler();
+    try {
+      if (this.state.strike === 0) {
+        this.setState({
+          strike: 1
+        });
+      } else if (this.state.strike === 1) {
+        await this.setState({
+          strike: 3
+        });
+        this.resetHandler();
+      } else {
+        this.resetHandler();
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {
@@ -42,7 +67,8 @@ class App extends Component {
       <div className="App">
         <Dashboard
           addCounterHandler={this.addCounterHandler}
-          resetHandler={this.resetHandler}
+          foulHandler={this.foulHandler}
+          hitHandler={this.hitHandler}
         />
         <Display ball={this.state.ball} strike={this.state.strike} />
       </div>

@@ -13,12 +13,10 @@ class App extends Component {
 
   resetHandler = () => {
     if (this.state.strike >= 3 || this.state.ball >= 4) {
-      setTimeout(() => {
-        this.setState({
-          strike: 0,
-          ball: 0
-        });
-      }, 500);
+      this.setState({
+        strike: 0,
+        ball: 0
+      });
     }
   };
 

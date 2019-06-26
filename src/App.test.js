@@ -3,9 +3,7 @@ import * as rtl from "@testing-library/react";
 import "@testing-library/react/cleanup-after-each";
 import "jest-dom/extend-expect";
 
-import App from "./App";
-import Dashboard from "./components/Dashboard.js";
-import Display from "./components/Display.js";
+import App from "./App.js";
 
 it("renders without crashing", () => {
   rtl.render(<App />);

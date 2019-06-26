@@ -5,16 +5,24 @@ function Dashboard(props) {
     <>
       <h3>Dashboard</h3>
       <div>
-        <button name="strike" onClick={props.addCounterHandler}>
+        <button
+          data-testid="strike"
+          name="strike"
+          onClick={props.addCounterHandler}
+        >
           Strike
         </button>
-        <button name="ball" onClick={props.addCounterHandler}>
+        <button
+          data-testid="ball"
+          name="ball"
+          onClick={props.addCounterHandler}
+        >
           Ball
         </button>
-        <button name="foul" onClick={props.foulHandler}>
+        <button data-testid="foul" name="foul" onClick={props.foulHandler}>
           Foul
         </button>
-        <button name="hit" onClick={props.hitHandler}>
+        <button data-testid="hit" name="hit" onClick={props.hitHandler}>
           Hit
         </button>
       </div>

@@ -12,11 +12,28 @@ it("should reset balls and strikes to zero after strike has been hit three times
   const { getByText, getByTestId } = rtl.render(<App />);
 
   const strikes = getByText(/Strike:/i);
-  const button = getByTestId("strike");
+  const strikeButton = getByTestId("strike");
 
-  fireEvent.click(button);
-  fireEvent.click(button);
-  await fireEvent.click(button);
+  fireEvent.click(strikeButton);
+  fireEvent.click(strikeButton);
+  await fireEvent.click(strikeButton);
 
   expect(strikes).toHaveTextContent(/0/i);
+});
+
+it("should reset balls and strikes to zero after a hit", async () => {
+  const { getByText, getByTestId } = rtl.render(<App />);
+
+  const strikes = getByText(/Strike:/i);
+  const balls = getByText(/Ball:/i);
+  const strikeButton = getByTestId("strike");
+  const ballButton = getByTestId("ball");
+  const hitButton = getByTestId("hit");
+
+  fireEvent.click(strikeButton);
+  fireEvent.click(ballButton);
+  await fireEvent.click(hitButton);
+
+  expect(strikes).toHaveTextContent(/0/i);
+  expect(balls).toHaveTextContent(/0/i);
 });
